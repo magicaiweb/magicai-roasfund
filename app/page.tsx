@@ -23,6 +23,12 @@ const impasses = [
   },
 ];
 
+const manifesto = [
+  "Pas d'equity.",
+  "Pas de garantie personnelle.",
+  "Souscription sur la performance.",
+];
+
 const features = [
   "0 % dilution",
   "Décision en 48 h",
@@ -32,24 +38,35 @@ const features = [
 
 const steps = [
   {
-    title: "Connexion des données",
-    copy: "Stripe, comptes publicitaires, CRM et analytics sont connectés en lecture seule.",
+    title: "Underwrite by data",
+    copy: "Les données Stripe, ad accounts et CRM connectées pilotent chaque décision: mesurable, actuelle, transparente.",
   },
   {
-    title: "Scoring & offre IA",
-    copy: "Roasfund modélise la qualité des revenus, la marge et la vélocité d'acquisition.",
+    title: "Repay by revenue",
+    copy: "Un pourcentage fixe du revenu jusqu'au règlement de l'avance. Aligné avec la croissance réelle d'un SaaS.",
   },
   {
-    title: "Virement & remboursement",
-    copy: "L'avance est versée, puis remboursée comme un pourcentage plafonné du revenu.",
+    title: "Operate sovereign",
+    copy: "Infrastructure européenne, base de capital européenne, régime réglementaire européen: par conception.",
   },
 ];
 
 const marketStats = [
-  { value: "30 000+", label: "SaaS européens adressables" },
-  { value: "€85 Mds", label: "revenus récurrents logiciels" },
-  { value: "€12 Mds", label: "marché RBF estimé en 2027" },
-  { value: "68 %", label: "fondateurs ouverts au non-dilutif" },
+  { value: "30 000+", label: "SaaS actifs en Europe" },
+  { value: "≈6 000", label: "sièges en France" },
+  { value: "€85 Mds", label: "revenus SaaS agrégés, 2025" },
+  { value: "€12 Mds", label: "marché RBF européen projeté 2027" },
+  { value: "+22 %", label: "croissance YoY moyenne pondérée" },
+  { value: "68 %", label: "fondateurs EU ouverts au non-dilutif" },
+];
+
+const revenueLoop = ["Capital", "Growth", "Revenue", "Capital"];
+
+const audiences = [
+  "Fondateurs SaaS €2M-€20M ARR",
+  "CFO et finance teams scale-up",
+  "Investisseurs institutionnels",
+  "Bpifrance, French Tech, incubateurs",
 ];
 
 function Logo({ variant = "lime" }: { variant?: "lime" | "ink" }) {
@@ -61,9 +78,9 @@ function Logo({ variant = "lime" }: { variant?: "lime" | "ink" }) {
           : "/websites/roasfund/logo-ink.svg"
       }
       alt="Roasfund"
-      width={170}
-      height={28}
-      className="h-7 w-auto"
+      width={196}
+      height={32}
+      className="h-8 w-auto"
       priority={variant === "lime"}
     />
   );
@@ -116,8 +133,19 @@ export default function Home() {
               Capital de croissance non-dilutif pour les SaaS européens.
             </h1>
             <p className="mt-7 max-w-2xl text-xl leading-8 text-slate-200">
-              Financement adossé aux revenus et à la performance ROAS.
+              Une nouvelle infrastructure de croissance: du capital aligné avec les revenus,
+              pas avec la dilution.
             </p>
+            <div className="mt-8 grid max-w-3xl gap-2 sm:grid-cols-3">
+              {manifesto.map((line) => (
+                <p
+                  key={line}
+                  className="border border-[#1A2234] px-4 py-3 font-mono text-xs font-medium uppercase tracking-[0.18em] text-slate-200"
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#contact"
@@ -141,7 +169,7 @@ export default function Home() {
               de la connexion au virement
             </p>
             <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-slate-400">
-              underwriting data-driven
+              Paris · Established 2026
             </p>
           </aside>
         </div>
@@ -152,7 +180,7 @@ export default function Home() {
           <div className="col-span-12 lg:col-span-4">
             <SectionLabel>Problème</SectionLabel>
             <h2 className="mt-5 font-headline text-4xl font-bold leading-tight text-white md:text-5xl">
-              Le capital de croissance reste mal calibré pour les SaaS.
+              La dépendance au capital étranger a un coût stratégique.
             </h2>
           </div>
           <div className="col-span-12 grid gap-4 md:grid-cols-3 lg:col-span-8">
@@ -163,9 +191,12 @@ export default function Home() {
               </article>
             ))}
             <div className="border border-[#1A2234] bg-[#06080F] p-6 md:col-span-3">
-              <p className="font-mono text-6xl font-medium text-[#C5F02E]">4×</p>
+              <p className="font-mono text-6xl font-medium text-[#C5F02E]">73 %</p>
               <p className="mt-3 max-w-3xl text-xl text-slate-200">
-                plus de capital de croissance disponible par startup aux États-Unis qu&apos;en Europe.
+                du capital de croissance des SaaS français vient des États-Unis et du Royaume-Uni.
+              </p>
+              <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-slate-400">
+                Sources: Atomico · Bpifrance Le Lab
               </p>
             </div>
           </div>
@@ -183,9 +214,8 @@ export default function Home() {
           </div>
           <div className="col-span-12 lg:col-span-7">
             <p className="max-w-3xl text-xl leading-8 text-slate-600">
-              Roasfund connecte les sources de revenus et d&apos;acquisition, mesure la qualité de la
-              traction et débloque un financement non-dilutif, remboursé uniquement quand le revenu
-              rentre.
+              Roasfund finance la croissance SaaS européenne avec des données de performance
+              temps réel: pas d&apos;equity, pas de collatéral. Un rail entre performance et capital.
             </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {features.map((feature) => (
@@ -206,8 +236,23 @@ export default function Home() {
             <div className="col-span-12 md:col-span-7">
               <SectionLabel>Comment ça marche</SectionLabel>
               <h2 className="mt-5 font-headline text-4xl font-bold leading-tight md:text-5xl">
-                Trois étapes, du signal data au capital disponible.
+                La Revenue Loop transforme la performance en capital.
               </h2>
+            </div>
+            <div className="col-span-12 md:col-span-5">
+              <div className="grid grid-cols-2 border border-[#1A2234] bg-[#06080F]">
+                {revenueLoop.map((item, index) => (
+                  <div
+                    key={`${item}-${index}`}
+                    className="min-h-28 border border-[#1A2234] p-5"
+                  >
+                    <p className="font-mono text-xs font-medium text-[#C5F02E]">
+                      0{index + 1}
+                    </p>
+                    <p className="mt-8 font-headline text-2xl font-bold">{item}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
@@ -227,7 +272,10 @@ export default function Home() {
       <section id="marche" className="border-y border-[#1A2234] bg-[#06080F]">
         <div className="mx-auto max-w-7xl px-5 py-20 md:px-8 lg:py-28">
           <SectionLabel>Marché</SectionLabel>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <h2 className="mt-5 max-w-4xl font-headline text-4xl font-bold leading-tight md:text-5xl">
+            Une opportunité européenne de €12 milliards, aujourd&apos;hui.
+          </h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {marketStats.map((stat) => (
               <div key={stat.value} className="border border-[#1A2234] p-6">
                 <p className="font-mono text-4xl font-medium text-white">{stat.value}</p>
@@ -241,16 +289,16 @@ export default function Home() {
       <section id="equipe" className="bg-[#0A0E1A]">
         <div className="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-5 py-20 md:px-8 lg:py-28">
           <div className="col-span-12 lg:col-span-5">
-            <SectionLabel>Souveraineté</SectionLabel>
+            <SectionLabel>Vision souveraine</SectionLabel>
             <h2 className="mt-5 font-headline text-4xl font-bold leading-tight md:text-5xl">
-              Une infrastructure financière européenne par conception.
+              L&apos;infrastructure financière par défaut des économies de performance européennes.
             </h2>
           </div>
           <div className="col-span-12 lg:col-span-7">
             <p className="text-xl leading-8 text-slate-200">
-              Roasfund est pensé pour les contraintes des fondateurs, investisseurs et régulateurs
-              européens: gouvernance RGPD, architecture compatible SecNumCloud, parcours de
-              conformité ACPR et underwriting explicable.
+              Là où les entreprises digitales accèdent au capital à la vitesse du revenu, sur les
+              termes de leurs données. Roasfund construit une alternative souveraine: conformité ACPR
+              par design, attribution ROAS post-cookie et infrastructure cloud européenne.
             </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               {["RGPD", "SecNumCloud", "ACPR"].map((item) => (
@@ -260,6 +308,18 @@ export default function Home() {
                   </p>
                 </div>
               ))}
+            </div>
+            <div className="mt-10 border border-[#1A2234] bg-[#111726] p-6">
+              <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
+                Audiences clés
+              </p>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {audiences.map((audience) => (
+                  <p key={audience} className="border border-[#1A2234] px-4 py-3 text-slate-200">
+                    {audience}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
         </div>
