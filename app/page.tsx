@@ -55,7 +55,11 @@ const marketStats = [
 function Logo({ variant = "lime" }: { variant?: "lime" | "ink" }) {
   return (
     <Image
-      src={variant === "lime" ? "/logo-lime.svg" : "/logo-ink.svg"}
+      src={
+        variant === "lime"
+          ? "/websites/roasfund/logo-lime.svg"
+          : "/websites/roasfund/logo-ink.svg"
+      }
       alt="Roasfund"
       width={170}
       height={28}
