@@ -493,7 +493,7 @@ export default function Home() {
             </div>
             <a
               href="#contact"
-              className="hidden border border-[#C5F02E] px-4 py-3 text-sm font-semibold text-[#C5F02E] transition-colors hover:bg-white hover:text-[#06080F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C5F02E] sm:inline-flex"
+              className="hidden border border-[#C5F02E] px-4 py-3 text-sm font-semibold text-[#C5F02E] transition-colors hover:bg-white hover:text-[#06080F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C5F02E] lg:inline-flex"
             >
               {page.primaryCta}
             </a>
