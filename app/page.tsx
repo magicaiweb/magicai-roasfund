@@ -422,6 +422,7 @@ function Logo({ variant = "lime" }: { variant?: "lime" | "ink" }) {
       width={896}
       height={353}
       className="h-9 w-auto md:h-10"
+      unoptimized
       priority={variant === "lime"}
     />
   );
