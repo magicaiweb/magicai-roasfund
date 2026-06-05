@@ -69,20 +69,14 @@ const audiences = [
   "Bpifrance, French Tech, incubateurs",
 ];
 
-const logoVersion = "28104e2";
-
 function Logo({ variant = "lime" }: { variant?: "lime" | "ink" }) {
   return (
     <Image
-      src={
-        variant === "lime"
-          ? `/websites/roasfund/logo-lime.svg?v=${logoVersion}`
-          : `/websites/roasfund/logo-ink.svg?v=${logoVersion}`
-      }
+      src={variant === "lime" ? "/websites/roasfund/logo-lime.png" : "/websites/roasfund/logo-ink.png"}
       alt="Roasfund"
-      width={196}
-      height={32}
-      className="h-8 w-auto"
+      width={896}
+      height={353}
+      className="h-9 w-auto md:h-10"
       priority={variant === "lime"}
     />
   );
