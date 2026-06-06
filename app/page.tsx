@@ -53,6 +53,12 @@ type LocalizedContent = {
     audiencesLabel: string;
     audiences: string[];
   };
+  team: {
+    label: string;
+    title: string;
+    copy: string;
+    members: { name: string; role: string; bio: string }[];
+  };
   contact: {
     label: string;
     title: string;
@@ -170,6 +176,26 @@ const content: Record<Locale, LocalizedContent> = {
         "Bpifrance, French Tech, incubateurs",
       ],
     },
+    team: {
+      label: "Équipe",
+      title: "Deux cofondateurs à l'intersection croissance, data et capital.",
+      copy:
+        "Roasfund réunit l'exécution growth B2B et l'architecture technologique nécessaires pour souscrire le capital sur la performance réelle.",
+      members: [
+        {
+          name: "Elia El Hachem",
+          role: "CEO & cofondateur",
+          bio:
+            "10+ ans en growth marketing et médias B2B, avec des budgets ROAS à huit chiffres.",
+        },
+        {
+          name: "Michel Haber",
+          role: "CIO & cofondateur",
+          bio:
+            "15+ ans en technologie, marketing digital, innovation, SaaS, IA, data et plateformes d'automatisation.",
+        },
+      ],
+    },
     contact: {
       label: "Contact",
       title: "Construisons l'infrastructure de croissance européenne.",
@@ -282,6 +308,26 @@ const content: Record<Locale, LocalizedContent> = {
         "Scale-up CFOs and finance teams",
         "Institutional investors",
         "Bpifrance, French Tech, incubators",
+      ],
+    },
+    team: {
+      label: "Team",
+      title: "Two co-founders at the intersection of growth, data, and capital.",
+      copy:
+        "Roasfund brings together B2B growth execution and technology architecture to underwrite capital on real performance.",
+      members: [
+        {
+          name: "Elia El Hachem",
+          role: "CEO & co-founder",
+          bio:
+            "10+ years in B2B growth marketing and media, managing eight-figure ROAS budgets.",
+        },
+        {
+          name: "Michel Haber",
+          role: "CIO & co-founder",
+          bio:
+            "15+ years across technology, digital marketing, innovation, SaaS, AI, data, and automation platforms.",
+        },
       ],
     },
     contact: {
@@ -398,6 +444,26 @@ const content: Record<Locale, LocalizedContent> = {
         "Bpifrance وFrench Tech والحاضنات",
       ],
     },
+    team: {
+      label: "الفريق",
+      title: "مؤسسان عند تقاطع النمو والبيانات ورأس المال.",
+      copy:
+        "يجمع Roasfund بين تنفيذ نمو B2B وبنية التكنولوجيا لتقييم رأس المال بناء على الأداء الحقيقي.",
+      members: [
+        {
+          name: "إليا الهاشم",
+          role: "الرئيس التنفيذي والشريك المؤسس",
+          bio:
+            "أكثر من 10 سنوات في تسويق النمو وإعلام B2B مع إدارة ميزانيات ROAS من ثمانية أرقام.",
+        },
+        {
+          name: "ميشال حبر",
+          role: "رئيس المعلومات والشريك المؤسس",
+          bio:
+            "أكثر من 15 سنة في التكنولوجيا والتسويق الرقمي والابتكار ومنصات SaaS والذكاء الاصطناعي والبيانات والأتمتة.",
+        },
+      ],
+    },
     contact: {
       label: "تواصل",
       title: "لنبن بنية النمو الأوروبية.",
@@ -417,11 +483,13 @@ const localeLabels: { code: Locale; label: string }[] = [
 function Logo({ variant = "lime" }: { variant?: "lime" | "ink" }) {
   return (
     <Image
-      src={variant === "lime" ? "/websites/roasfund/logo-lime.png" : "/websites/roasfund/logo-ink.png"}
+      src="/websites/roasfund/logo-authoritative-2026-06-05.jpg"
       alt="Roasfund"
-      width={896}
-      height={353}
-      className="h-9 w-auto md:h-10"
+      width={1280}
+      height={658}
+      className={`h-10 w-auto bg-white object-contain md:h-11 ${
+        variant === "ink" ? "border border-slate-200" : "border border-white/10"
+      }`}
       unoptimized
       priority={variant === "lime"}
     />
@@ -662,7 +730,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="equipe" className="bg-[#0A0E1A]">
+      <section id="souverainete" className="bg-[#0A0E1A]">
         <div className="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-5 py-20 md:px-8 lg:py-28">
           <div className="col-span-12 lg:col-span-5">
             <SectionLabel>{page.vision.label}</SectionLabel>
@@ -693,6 +761,33 @@ export default function Home() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="equipe" className="border-y border-[#1A2234] bg-[#06080F]">
+        <div className="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-5 py-20 md:px-8 lg:py-28">
+          <div className="col-span-12 lg:col-span-5">
+            <SectionLabel>{page.team.label}</SectionLabel>
+            <h2 className="mt-5 font-headline text-4xl font-bold leading-tight md:text-5xl">
+              {page.team.title}
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-400">
+              {page.team.copy}
+            </p>
+          </div>
+          <div className="col-span-12 grid gap-4 lg:col-span-7">
+            {page.team.members.map((member) => (
+              <article key={member.name} className="border border-[#1A2234] bg-[#111726] p-6">
+                <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-[#C5F02E]">
+                  {member.role}
+                </p>
+                <h3 className="mt-5 font-headline text-3xl font-bold text-white">
+                  {member.name}
+                </h3>
+                <p className="mt-5 max-w-2xl leading-7 text-slate-400">{member.bio}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
