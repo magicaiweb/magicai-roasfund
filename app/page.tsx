@@ -483,13 +483,11 @@ const localeLabels: { code: Locale; label: string }[] = [
 function Logo({ variant = "lime" }: { variant?: "lime" | "ink" }) {
   return (
     <Image
-      src="/websites/roasfund/logo-authoritative-2026-06-05.jpg"
+      src={variant === "ink" ? "/websites/roasfund/logo-ink.png" : "/websites/roasfund/logo-lime.png"}
       alt="Roasfund"
-      width={1280}
-      height={658}
-      className={`h-10 w-auto bg-white object-contain md:h-11 ${
-        variant === "ink" ? "border border-slate-200" : "border border-white/10"
-      }`}
+      width={896}
+      height={353}
+      className="h-7 w-auto object-contain md:h-8"
       unoptimized
       priority={variant === "lime"}
     />
